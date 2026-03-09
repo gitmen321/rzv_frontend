@@ -62,6 +62,11 @@ export default function LoginPage() {
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
                 <div className="bg-slate-800 border border-slate-700 px-6 py-12 shadow-lg sm:rounded-lg sm:px-12">
                     <ErrorAlert message={error} />
+
+                    {/* Admin credentials note */}
+                    <div className="mb-5 rounded-md bg-blue-900/30 border border-blue-700/50 px-4 py-2.5 text-sm text-blue-300">
+                        🔐 Use <span className="font-semibold text-blue-200">ADMIN credentials</span> to login to the dashboard.
+                    </div>
                     
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         <div>
@@ -134,6 +139,20 @@ export default function LoginPage() {
                             </button>
                         </div>
                     </form>
+
+                    {/* Demo registration section */}
+                    <div className="mt-6 border-t border-slate-700 pt-6">
+                        <Link
+                            href="/register"
+                            className="flex w-full justify-center rounded-md bg-purple-600 px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-700 transition-all"
+                        >
+                            Create Demo User Account
+                        </Link>
+                        <p className="mt-3 text-center text-xs text-slate-500 leading-relaxed">
+                            User registration is available for demo purposes only.<br />
+                            Admin login is required to access the admin dashboard.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -51,5 +51,16 @@ export const authService = {
         }
         
         return response.json();
+    },
+
+    register: async ({ name, email, password, confirmPassword, referralCode }) => {
+        const body = { name, email, password, confirmPassword };
+        if (referralCode) body.referralCode = referralCode;
+        const response = await fetchApi(API_ROUTES.AUTH.REGISTER, {
+            method: 'POST',
+            body: JSON.stringify(body),
+        });
+        if (!response.ok) throw response;
+        return response.json();
     }
 };

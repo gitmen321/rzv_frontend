@@ -1,6 +1,7 @@
 export const API_ROUTES = {
     AUTH: {
         LOGIN: '/login-web',
+        REGISTER: '/register',
         FORGOT_PASSWORD: '/forgot-password',
         RESET_PASSWORD: (token) => `/reset-password/${token}`,
         LOGOUT: '/logout',
