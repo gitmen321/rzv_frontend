@@ -21,24 +21,21 @@ export default function UsersPage() {
         setLoading(true);
         setError('');
         try {
+            const data = await adminService.getUsers({ page, limit, sortBy, order });
             console.log("API RESPONSE (USERS):", data);
-            const usersList = data.user?.data || data.users || [];
+            const usersList = data.user?.data || [];
             setUsers(usersList);
             setTotalPages(data.user?.meta?.totalPages || data.totalPages || 1);
         } catch (err) {
             const errData = await err.json?.().catch(() => ({}));
-            setError(errData.message || 'Failed to fetch users');
+            setError(errData?.message || 'Failed to fetch users');
         } finally {
             setLoading(false);
         }
-    }, [page, limit, sortBy, order, search]);
+    }, [page, limit, sortBy, order]);
 
     useEffect(() => {
-        // debounce search
-        const delaySearch = setTimeout(() => {
-            fetchUsers();
-        }, 500);
-        return () => clearTimeout(delaySearch);
+        fetchUsers();
     }, [fetchUsers]);
 
     const handleSort = (field) => {
@@ -56,28 +53,6 @@ export default function UsersPage() {
                 <div className="sm:flex-auto">
                     <h1 className="text-xl font-semibold leading-6 text-gray-900">Users</h1>
                     <p className="mt-2 text-sm text-gray-700">A list of all users in the system.</p>
-                </div>
-            </div>
-            
-            <div className="mt-4 sm:flex gap-4">
-                <div className="w-full sm:max-w-xs">
-                    <label htmlFor="search" className="sr-only">Search</label>
-                    <div className="relative">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                            <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fillRule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clipRule="evenodd" />
-                            </svg>
-                        </div>
-                        <input
-                            id="search"
-                            name="search"
-                            type="search"
-                            placeholder="Search by name or email..."
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            className="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
-                    </div>
                 </div>
             </div>
 
@@ -106,10 +81,10 @@ export default function UsersPage() {
                                                 Status {sortBy === 'isActive' && (order === 'asc' ? '↑' : '↓')}
                                             </th>
                                             <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 cursor-pointer" onClick={() => handleSort('createdAt')}>
-                                                Created At {sortBy === 'createdAt' && (order === 'asc' ? '↑' : '↓')}
+                                                Created Date {sortBy === 'createdAt' && (order === 'asc' ? '↑' : '↓')}
                                             </th>
-                                            <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                                <span className="sr-only">View</span>
+                                            <th scope="col" className="px-3 py-3.5 text-right text-sm font-semibold text-gray-900">
+                                                Actions
                                             </th>
                                         </tr>
                                     </thead>
@@ -133,9 +108,18 @@ export default function UsersPage() {
                                                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     {new Date(user.createdAt).toLocaleDateString()}
                                                 </td>
-                                                <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                                    <Link href={`/dashboard/users/${user._id || user.id}`} className="text-indigo-600 hover:text-indigo-900">
-                                                        View<span className="sr-only">, {user.name}</span>
+                                                <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 flex justify-end space-x-3">
+                                                    <Link 
+                                                        href={`/dashboard/users/${user._id || user.id}`} 
+                                                        className="inline-flex items-center rounded-md bg-blue-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                                                    >
+                                                        View
+                                                    </Link>
+                                                    <Link 
+                                                        href={`/dashboard/users/${user._id || user.id}/wallet`} 
+                                                        className="inline-flex items-center rounded-md bg-purple-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+                                                    >
+                                                        Manage Wallet
                                                     </Link>
                                                 </td>
                                             </tr>
