@@ -1,0 +1,233 @@
+
+> rzv_frontend@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 9 errors:
+./src/app/dashboard/page.js:34:89
+Parsing ecmascript source code failed
+[0m [90m 32 |[39m         { name[33m:[39m [32m'Inactive Users'[39m[33m,[39m stat[33m:[39m stats[33m?[39m[33m.[39minactiveUsers [33m||[39m [35m0[39m[33m,[39m icon[33m:[39m [32m'M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636'[39m[33m,[39m color[33m:[39m [32m'bg-red-500'[39m }[33m,[39m
+ [90m 33 |[39m         { name[33m:[39m [32m'New Users Today'[39m[33m,[39m stat[33m:[39m stats[33m?[39m[33m.[39mnewUsersToday [33m||[39m [35m0[39m[33m,[39m icon[33m:[39m [32m'M12 4.5v15m7.5-7.5h-15'[39m[33m,[39m color[33m:[39m [32m'bg-blue-500'[39m }[33m,[39m
+[31m[1m>[22m[39m[90m 34 |[39m         { name[33m:[39m [32m'Wallet Balance'[39m[33m,[39m stat[33m:[39m [36mtypeof[39m stats[33m?[39m[33m.[39mwalletTotalBalance [33m===[39m [32m'number'[39m [33m?[39m [37m[41m[1m\[22m[49m[39m[32m`\${stats.walletTotalBalance.toFixed(2)}\` : '0.00', icon: 'M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z', color: 'bg-purple-500' },[39m
+ [90m    |[39m                                                                                         [31m[1m^[22m[39m
+ [90m 35 |[39m [32m    ];[39m
+ [90m 36 |[39m [32m[39m
+ [90m 37 |[39m [32m    return ([39m[0m
+
+Expected unicode escape
+
+
+./src/app/reset-password/[token]/page.js:6:1
+Module not found: Can't resolve '../../../../components/ErrorAlert'
+[0m [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[33m;[39m
+ [90m 5 |[39m [36mimport[39m { authService } [36mfrom[39m [32m'../../../../services/authService'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m [33mErrorAlert[39m [36mfrom[39m [32m'../../../../components/ErrorAlert'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 7 |[39m [36mimport[39m [33mSuccessAlert[39m [36mfrom[39m [32m'../../../../components/SuccessAlert'[39m[33m;[39m
+ [90m 8 |[39m [36mimport[39m [33mLoadingSpinner[39m [36mfrom[39m [32m'../../../../components/LoadingSpinner'[39m[33m;[39m
+ [90m 9 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mResetPasswordPage[39m({[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/reset-password/[token]/page.js [Client Component Browser]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+  Client Component SSR:
+    ./src/app/reset-password/[token]/page.js [Client Component SSR]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/reset-password/[token]/page.js:5:1
+Module not found: Can't resolve '../../../../components/ErrorAlert'
+[0m [90m 3 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[33m;[39m
+ [90m 4 |[39m [36mimport[39m { authService } [36mfrom[39m [32m'../../../../services/authService'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m [33mErrorAlert[39m [36mfrom[39m [32m'../../../../components/ErrorAlert'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m [33mSuccessAlert[39m [36mfrom[39m [32m'../../../../components/SuccessAlert'[39m[33m;[39m
+ [90m 7 |[39m [36mimport[39m [33mLoadingSpinner[39m [36mfrom[39m [32m'../../../../components/LoadingSpinner'[39m[33m;[39m
+ [90m 8 |[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/reset-password/[token]/page.js [Client Component Browser]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+  Client Component SSR:
+    ./src/app/reset-password/[token]/page.js [Client Component SSR]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/reset-password/[token]/page.js:8:1
+Module not found: Can't resolve '../../../../components/LoadingSpinner'
+[0m [90m  6 |[39m [36mimport[39m [33mErrorAlert[39m [36mfrom[39m [32m'../../../../components/ErrorAlert'[39m[33m;[39m
+ [90m  7 |[39m [36mimport[39m [33mSuccessAlert[39m [36mfrom[39m [32m'../../../../components/SuccessAlert'[39m[33m;[39m
+[31m[1m>[22m[39m[90m  8 |[39m [36mimport[39m [33mLoadingSpinner[39m [36mfrom[39m [32m'../../../../components/LoadingSpinner'[39m[33m;[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  9 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mResetPasswordPage[39m({
+ [90m 10 |[39m   params
+ [90m 11 |[39m }) {[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/reset-password/[token]/page.js [Client Component Browser]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+  Client Component SSR:
+    ./src/app/reset-password/[token]/page.js [Client Component SSR]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/reset-password/[token]/page.js:7:1
+Module not found: Can't resolve '../../../../components/LoadingSpinner'
+[0m [90m  5 |[39m [36mimport[39m [33mErrorAlert[39m [36mfrom[39m [32m'../../../../components/ErrorAlert'[39m[33m;[39m
+ [90m  6 |[39m [36mimport[39m [33mSuccessAlert[39m [36mfrom[39m [32m'../../../../components/SuccessAlert'[39m[33m;[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m [33mLoadingSpinner[39m [36mfrom[39m [32m'../../../../components/LoadingSpinner'[39m[33m;[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m
+ [90m  9 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mResetPasswordPage[39m({ params }) {
+ [90m 10 |[39m     [90m// React 19 / Next 15 specific unwrapping params if required, use `use(params)`[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/reset-password/[token]/page.js [Client Component Browser]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+  Client Component SSR:
+    ./src/app/reset-password/[token]/page.js [Client Component SSR]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/reset-password/[token]/page.js:7:1
+Module not found: Can't resolve '../../../../components/SuccessAlert'
+[0m [90m  5 |[39m [36mimport[39m { authService } [36mfrom[39m [32m'../../../../services/authService'[39m[33m;[39m
+ [90m  6 |[39m [36mimport[39m [33mErrorAlert[39m [36mfrom[39m [32m'../../../../components/ErrorAlert'[39m[33m;[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mimport[39m [33mSuccessAlert[39m [36mfrom[39m [32m'../../../../components/SuccessAlert'[39m[33m;[39m
+ [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m [36mimport[39m [33mLoadingSpinner[39m [36mfrom[39m [32m'../../../../components/LoadingSpinner'[39m[33m;[39m
+ [90m  9 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mResetPasswordPage[39m({
+ [90m 10 |[39m   params[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/reset-password/[token]/page.js [Client Component Browser]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+  Client Component SSR:
+    ./src/app/reset-password/[token]/page.js [Client Component SSR]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/reset-password/[token]/page.js:6:1
+Module not found: Can't resolve '../../../../components/SuccessAlert'
+[0m [90m 4 |[39m [36mimport[39m { authService } [36mfrom[39m [32m'../../../../services/authService'[39m[33m;[39m
+ [90m 5 |[39m [36mimport[39m [33mErrorAlert[39m [36mfrom[39m [32m'../../../../components/ErrorAlert'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m [33mSuccessAlert[39m [36mfrom[39m [32m'../../../../components/SuccessAlert'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 7 |[39m [36mimport[39m [33mLoadingSpinner[39m [36mfrom[39m [32m'../../../../components/LoadingSpinner'[39m[33m;[39m
+ [90m 8 |[39m
+ [90m 9 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mResetPasswordPage[39m({ params }) {[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/reset-password/[token]/page.js [Client Component Browser]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+  Client Component SSR:
+    ./src/app/reset-password/[token]/page.js [Client Component SSR]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/reset-password/[token]/page.js:5:1
+Module not found: Can't resolve '../../../../services/authService'
+[0m [90m 3 |[39m [36mimport[39m { useState[33m,[39m use } [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 5 |[39m [36mimport[39m { authService } [36mfrom[39m [32m'../../../../services/authService'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 6 |[39m [36mimport[39m [33mErrorAlert[39m [36mfrom[39m [32m'../../../../components/ErrorAlert'[39m[33m;[39m
+ [90m 7 |[39m [36mimport[39m [33mSuccessAlert[39m [36mfrom[39m [32m'../../../../components/SuccessAlert'[39m[33m;[39m
+ [90m 8 |[39m [36mimport[39m [33mLoadingSpinner[39m [36mfrom[39m [32m'../../../../components/LoadingSpinner'[39m[33m;[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/reset-password/[token]/page.js [Client Component Browser]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+  Client Component SSR:
+    ./src/app/reset-password/[token]/page.js [Client Component SSR]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./src/app/reset-password/[token]/page.js:4:1
+Module not found: Can't resolve '../../../../services/authService'
+[0m [90m 2 |[39m [36mimport[39m { useState[33m,[39m use } [36mfrom[39m [32m'react'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m { authService } [36mfrom[39m [32m'../../../../services/authService'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 5 |[39m [36mimport[39m [33mErrorAlert[39m [36mfrom[39m [32m'../../../../components/ErrorAlert'[39m[33m;[39m
+ [90m 6 |[39m [36mimport[39m [33mSuccessAlert[39m [36mfrom[39m [32m'../../../../components/SuccessAlert'[39m[33m;[39m
+ [90m 7 |[39m [36mimport[39m [33mLoadingSpinner[39m [36mfrom[39m [32m'../../../../components/LoadingSpinner'[39m[33m;[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/reset-password/[token]/page.js [Client Component Browser]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+  Client Component SSR:
+    ./src/app/reset-password/[token]/page.js [Client Component SSR]
+    ./src/app/reset-password/[token]/page.js [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./src/app/dashboard/page.js:34:89)
+    at <unknown> (./src/app/reset-password/[token]/page.js:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/reset-password/[token]/page.js:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/reset-password/[token]/page.js:8:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/reset-password/[token]/page.js:7:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/reset-password/[token]/page.js:7:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/reset-password/[token]/page.js:6:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/reset-password/[token]/page.js:5:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (./src/app/reset-password/[token]/page.js:4:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)

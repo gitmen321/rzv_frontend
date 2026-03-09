@@ -1,8 +1,5 @@
-export default function Home(){
-  return (
-    <main> 
-      <h1> RZV backend demo</h1>
-      <p>Frontend connected</p>
-    </main>
-  );
+import { redirect } from 'next/navigation';
+
+export default function Home() {
+  redirect('/login');
 }
