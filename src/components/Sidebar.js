@@ -3,58 +3,157 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: 'M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25' },
-    { name: 'Users', href: '/dashboard/users', icon: 'M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z' },
-    { name: 'Wallet Summary', href: '/dashboard/wallet-summary', icon: 'M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z' },
-    { name: 'Wallet Range', href: '/dashboard/wallet-range', icon: 'M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5' },
-    { name: 'Audit Logs', href: '/dashboard/audit', icon: 'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z' },
-    { name: 'Recent Activity', href: '/dashboard/recent-activity', icon: 'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z' }
+    {
+        name: 'Dashboard',
+        href: '/dashboard',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" stroke="currentColor" className="w-5 h-5">
+                <rect x="3" y="3" width="7" height="7" rx="1.5" strokeLinejoin="round"/>
+                <rect x="14" y="3" width="7" height="7" rx="1.5" strokeLinejoin="round"/>
+                <rect x="3" y="14" width="7" height="7" rx="1.5" strokeLinejoin="round"/>
+                <rect x="14" y="14" width="7" height="7" rx="1.5" strokeLinejoin="round"/>
+            </svg>
+        ),
+    },
+    {
+        name: 'Users',
+        href: '/dashboard/users',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" stroke="currentColor" className="w-5 h-5">
+                <circle cx="9" cy="7" r="3.5"/>
+                <path d="M2.5 20.5c0-3.314 2.91-6 6.5-6s6.5 2.686 6.5 6" strokeLinecap="round"/>
+                <path d="M17 11c1.657 0 3 1.343 3 3" strokeLinecap="round"/>
+                <path d="M19 20.5c0-2.485-1.343-4.5-3-4.5" strokeLinecap="round"/>
+            </svg>
+        ),
+    },
+    {
+        name: 'Wallet Summary',
+        href: '/dashboard/wallet-summary',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" stroke="currentColor" className="w-5 h-5">
+                <rect x="2" y="7" width="20" height="13" rx="2.5"/>
+                <path d="M16 13.5a1 1 0 100 2 1 1 0 000-2z" fill="currentColor" stroke="none"/>
+                <path d="M2 10.5h20" strokeLinecap="round"/>
+                <path d="M6 4l4-2 4 2 4-2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+        ),
+    },
+    {
+        name: 'Wallet Range',
+        href: '/dashboard/wallet-range',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" stroke="currentColor" className="w-5 h-5">
+                <path d="M3 4h18M3 9h18M3 14h10M3 19h7" strokeLinecap="round"/>
+                <circle cx="18.5" cy="17" r="3.5"/>
+                <path d="M21 19.5l1.5 1.5" strokeLinecap="round"/>
+            </svg>
+        ),
+    },
+    {
+        name: 'Audit Logs',
+        href: '/dashboard/audit',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" stroke="currentColor" className="w-5 h-5">
+                <path d="M9 12h6M9 16h4M7 4H5.5A2.5 2.5 0 003 6.5v13A2.5 2.5 0 005.5 22h13a2.5 2.5 0 002.5-2.5V8l-5-4H7z" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M14 4v4h4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+        ),
+    },
+    {
+        name: 'Recent Activity',
+        href: '/dashboard/recent-activity',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" stroke="currentColor" className="w-5 h-5">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3 3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+        ),
+    },
+    {
+        name: 'Profile',
+        href: '/dashboard/profile',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" stroke="currentColor" className="w-5 h-5">
+                <circle cx="12" cy="8" r="3.5"/>
+                <path d="M4.5 20.5C4.5 17.186 7.91 15 12 15s7.5 2.186 7.5 5.5" strokeLinecap="round"/>
+            </svg>
+        ),
+    },
 ];
+
+// Coin SVG icon for the logo
+function CoinIcon() {
+    return (
+        <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 shadow-lg shadow-amber-500/30 ring-1 ring-amber-400/40 shrink-0">
+            <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+                <circle cx="12" cy="12" r="9" fill="rgba(255,255,255,0.15)"/>
+                <circle cx="12" cy="12" r="7" stroke="rgba(255,255,255,0.6)" strokeWidth="1"/>
+                <text x="12" y="16" textAnchor="middle" fontSize="9" fontWeight="bold" fill="white">₿</text>
+            </svg>
+        </div>
+    );
+}
 
 export default function Sidebar() {
     const pathname = usePathname();
 
     return (
-        <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-            <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
-                <div className="flex h-16 shrink-0 items-center mt-2">
-                    <span className="text-2xl font-black text-indigo-600 tracking-tight">System<span className="text-gray-900">Admin</span></span>
+        <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
+            <div
+                className="flex grow flex-col gap-y-5 overflow-y-auto px-4 pb-4"
+                style={{
+                    background: 'linear-gradient(180deg, #0f1629 0%, #0d1321 100%)',
+                    borderRight: '1px solid rgba(99,102,241,0.15)',
+                    boxShadow: '4px 0 24px rgba(0,0,0,0.4)',
+                }}
+            >
+                {/* Logo / Title */}
+                <div className="flex h-16 shrink-0 items-center gap-x-3 mt-1">
+                    <CoinIcon />
+                    <div className="flex flex-col leading-none">
+                        <span className="text-base font-black tracking-tight text-white">RZV <span className="text-indigo-400">Admin</span></span>
+                        <span className="text-[10px] text-slate-500 font-medium tracking-widest uppercase">Control Panel</span>
+                    </div>
                 </div>
+
+                {/* Divider */}
+                <div className="h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent -mt-2" />
+
                 <nav className="flex flex-1 flex-col">
-                    <ul role="list" className="flex flex-1 flex-col gap-y-7">
-                        <li>
-                            <ul role="list" className="-mx-2 space-y-1">
-                                {navigation.map((item) => {
-                                    const isActive = pathname === item.href || (pathname.startsWith(item.href) && item.href !== '/dashboard');
-                                    return (
-                                        <li key={item.name}>
-                                            <Link
-                                                href={item.href}
-                                                className={`
-                                                    group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold
-                                                    ${isActive 
-                                                        ? 'bg-gray-50 text-indigo-600' 
-                                                        : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50'
-                                                    }
-                                                `}
-                                            >
-                                                <svg 
-                                                    className={`h-6 w-6 shrink-0 ${isActive ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600'}`} 
-                                                    fill="none" 
-                                                    viewBox="0 0 24 24" 
-                                                    strokeWidth="1.5" 
-                                                    stroke="currentColor" 
-                                                    aria-hidden="true"
-                                                >
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
-                                                </svg>
-                                                {item.name}
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </li>
+                    <ul role="list" className="flex flex-1 flex-col gap-y-1">
+                        {navigation.map((item) => {
+                            const isActive = pathname === item.href || (pathname.startsWith(item.href) && item.href !== '/dashboard');
+                            return (
+                                <li key={item.name}>
+                                    <Link
+                                        href={item.href}
+                                        className={`
+                                            group flex items-center gap-x-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-150
+                                            ${isActive
+                                                ? 'bg-indigo-600/20 text-indigo-300 shadow-sm shadow-indigo-500/10 ring-1 ring-indigo-500/25'
+                                                : 'text-slate-400 hover:text-white hover:bg-white/5'
+                                            }
+                                        `}
+                                    >
+                                        {/* Icon wrapper */}
+                                        <span className={`
+                                            flex items-center justify-center w-8 h-8 rounded-lg shrink-0 transition-all duration-150
+                                            ${isActive
+                                                ? 'bg-indigo-500/25 text-indigo-300 shadow-inner shadow-indigo-500/20'
+                                                : 'bg-white/5 text-slate-500 group-hover:bg-white/10 group-hover:text-slate-200'
+                                            }
+                                        `}>
+                                            {item.icon}
+                                        </span>
+                                        {item.name}
+                                        {isActive && (
+                                            <span className="ml-auto w-1.5 h-1.5 rounded-full bg-indigo-400 shadow shadow-indigo-400/60" />
+                                        )}
+                                    </Link>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </nav>
             </div>

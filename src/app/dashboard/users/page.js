@@ -2,7 +2,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { adminService } from '../../../services/adminService';
-import Pagination from '../../../components/Pagination';
 import ErrorAlert from '../../../components/ErrorAlert';
 import LoadingSpinner from '../../../components/LoadingSpinner';
 
@@ -10,12 +9,18 @@ export default function UsersPage() {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    
+    // Pagination & Filters
     const [page, setPage] = useState(1);
-    const [limit] = useState(10);
-    const [totalPages, setTotalPages] = useState(1);
-    const [search, setSearch] = useState('');
+    const [limit, setLimit] = useState(10);
     const [sortBy, setSortBy] = useState('createdAt');
     const [order, setOrder] = useState('desc');
+
+    // Meta API info
+    const [totalUsers, setTotalUsers] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
+    const [hasNextPage, setHasNextPage] = useState(false);
+    const [hasPrevPage, setHasPrevPage] = useState(false);
 
     const fetchUsers = useCallback(async () => {
         setLoading(true);
@@ -25,7 +30,12 @@ export default function UsersPage() {
             console.log("API RESPONSE (USERS):", data);
             const usersList = data.user?.data || [];
             setUsers(usersList);
-            setTotalPages(data.user?.meta?.totalPages || data.totalPages || 1);
+            
+            const meta = data.user?.meta || {};
+            setTotalPages(meta.totalPages || data.totalPages || 1);
+            setTotalUsers(meta.totalUsers || 0);
+            setHasNextPage(meta.hasNextPage || false);
+            setHasPrevPage(meta.hasPrevPage || false);
         } catch (err) {
             const errData = await err.json?.().catch(() => ({}));
             setError(errData?.message || 'Failed to fetch users');
@@ -47,6 +57,18 @@ export default function UsersPage() {
         }
     };
 
+    const handleFilterChange = (e, type) => {
+        const val = e.target.value;
+        if (type === 'limit') {
+            setLimit(Number(val));
+            setPage(1);
+        } else if (type === 'sortBy') {
+            setSortBy(val);
+        } else if (type === 'order') {
+            setOrder(val);
+        }
+    };
+
     return (
         <div>
             <div className="sm:flex sm:items-center">
@@ -58,7 +80,52 @@ export default function UsersPage() {
 
             <ErrorAlert message={error} />
 
-            <div className="mt-8 flow-root">
+            {/* Filters Section */}
+            <div className="mt-6 flex flex-col sm:flex-row gap-4 bg-slate-800 p-4 rounded-lg border border-slate-700 ring-1 ring-slate-700">
+                <div className="flex flex-col sm:flex-row gap-4 items-center w-full">
+                    <div className="flex items-center space-x-2 w-full sm:w-auto">
+                        <label htmlFor="sortBy" className="text-sm font-medium text-slate-300 whitespace-nowrap">Sort By:</label>
+                        <select
+                            id="sortBy"
+                            value={sortBy}
+                            onChange={(e) => handleFilterChange(e, 'sortBy')}
+                            className="block w-full rounded-md border-0 bg-slate-700 py-1.5 pl-3 pr-8 text-slate-200 ring-1 ring-inset ring-slate-600 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 cursor-pointer"
+                        >
+                            <option value="createdAt">Created Date</option>
+                            <option value="name">Name</option>
+                        </select>
+                    </div>
+
+                    <div className="flex items-center space-x-2 w-full sm:w-auto">
+                        <label htmlFor="order" className="text-sm font-medium text-slate-300 whitespace-nowrap">Order:</label>
+                        <select
+                            id="order"
+                            value={order}
+                            onChange={(e) => handleFilterChange(e, 'order')}
+                            className="block w-full rounded-md border-0 bg-slate-700 py-1.5 pl-3 pr-8 text-slate-200 ring-1 ring-inset ring-slate-600 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 cursor-pointer"
+                        >
+                            <option value="desc">Descending</option>
+                            <option value="asc">Ascending</option>
+                        </select>
+                    </div>
+
+                    <div className="flex items-center space-x-2 w-full sm:w-auto sm:ml-auto mt-2 sm:mt-0">
+                        <label htmlFor="limit" className="text-sm font-medium text-slate-300 whitespace-nowrap">Limit:</label>
+                        <select
+                            id="limit"
+                            value={limit}
+                            onChange={(e) => handleFilterChange(e, 'limit')}
+                            className="block w-full rounded-md border-0 bg-slate-700 py-1.5 pl-3 pr-8 text-slate-200 ring-1 ring-inset ring-slate-600 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 cursor-pointer"
+                        >
+                            <option value={10}>10</option>
+                            <option value={20}>20</option>
+                            <option value={50}>50</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div className="mt-6 flow-root">
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                         {loading && users.length === 0 ? (
@@ -90,7 +157,7 @@ export default function UsersPage() {
                                     </thead>
                                     <tbody className="divide-y divide-slate-700 bg-slate-800">
                                         {users.map((user) => (
-                                            <tr key={user.id} className="hover:bg-slate-700/50 transition-colors">
+                                            <tr key={user.id || user._id} className="hover:bg-slate-700/50 transition-colors">
                                                 <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-slate-100 sm:pl-6">
                                                     {user.name}
                                                 </td>
@@ -135,7 +202,52 @@ export default function UsersPage() {
                 </div>
             </div>
 
-            <Pagination page={page} limit={limit} totalPages={totalPages} onPageChange={setPage} />
+            {/* Pagination UI */}
+            {!loading && users.length > 0 && (
+                <div className="flex items-center justify-between border-t border-slate-700 bg-slate-800 px-4 py-3 sm:px-6 mt-4 rounded-b-lg shadow ring-1 ring-slate-700">
+                    <div className="flex-1 flex justify-between sm:hidden">
+                        <button
+                            onClick={() => setPage(p => Math.max(1, p - 1))}
+                            disabled={!hasPrevPage}
+                            className="relative inline-flex items-center rounded-md border border-slate-600 bg-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            Previous
+                        </button>
+                        <button
+                            onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                            disabled={!hasNextPage}
+                            className="relative ml-3 inline-flex items-center rounded-md border border-slate-600 bg-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            Next
+                        </button>
+                    </div>
+                    <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                        <div>
+                            <p className="text-sm text-slate-300">
+                                Page <span className="font-medium text-white">{page}</span> of <span className="font-medium text-white">{totalPages}</span>
+                            </p>
+                        </div>
+                        <div>
+                            <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm gap-x-2" aria-label="Pagination">
+                                <button
+                                    onClick={() => setPage(p => Math.max(1, p - 1))}
+                                    disabled={!hasPrevPage}
+                                    className="relative inline-flex items-center rounded-md bg-slate-700 px-3 py-2 text-sm font-semibold text-slate-200 ring-1 ring-inset ring-slate-600 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                >
+                                    Previous
+                                </button>
+                                <button
+                                    onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                                    disabled={!hasNextPage}
+                                    className="relative inline-flex items-center rounded-md bg-slate-700 px-3 py-2 text-sm font-semibold text-slate-200 ring-1 ring-inset ring-slate-600 hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                >
+                                    Next
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
