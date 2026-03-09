@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { adminService } from '../../services/adminService';
 import ErrorAlert from '../../components/ErrorAlert';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import DashboardCharts from '../../components/dashboard/DashboardCharts';
 
 export default function DashboardPage() {
     const [stats, setStats] = useState(null);
@@ -36,60 +37,62 @@ export default function DashboardPage() {
     ];
 
     return (
-        <div>
-            <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight mb-8">
+        <div className="p-6 gap-6">
+            <h2 className="text-2xl font-bold leading-7 text-slate-100 sm:truncate sm:text-3xl sm:tracking-tight mb-8">
                 Dashboard Overview
             </h2>
 
             <ErrorAlert message={error} />
 
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 mb-8">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 mb-8">
                 {cards.map((item) => (
-                    <div key={item.name} className="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
+                    <div key={item.name} className="relative overflow-hidden rounded-lg bg-slate-800 border border-slate-700 px-4 pb-12 pt-5 shadow-lg sm:px-6 sm:pt-6">
                         <dt>
                             <div className={`absolute rounded-md p-3 ${item.color}`}>
                                 <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
                                     <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />
                                 </svg>
                             </div>
-                            <p className="ml-16 truncate text-sm font-medium text-gray-500">{item.name}</p>
+                            <p className="ml-16 truncate text-sm font-medium text-slate-400">{item.name}</p>
                         </dt>
                         <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
-                            <p className="text-2xl font-semibold text-gray-900">{item.stat}</p>
+                            <p className="text-2xl font-semibold text-slate-100">{item.stat}</p>
                         </dd>
                     </div>
                 ))}
             </div>
 
             {stats?.transactionsToday && (
-                <div className="mt-8 bg-white shadow rounded-lg px-6 py-6">
-                    <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">Today's Transactions Overview</h3>
-                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                        <div className="bg-green-50 rounded-md p-4 flex items-center justify-between border border-green-100">
+                <div className="mt-8 bg-slate-800 border border-slate-700 shadow-lg rounded-lg px-6 py-6">
+                    <h3 className="text-lg leading-6 font-medium text-slate-100 mb-4">Today's Transactions Overview</h3>
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div className="bg-emerald-900/30 rounded-md p-4 flex items-center justify-between border border-emerald-800">
                             <div>
-                                <p className="text-sm font-medium text-green-600">Total Credit</p>
-                                <p className="mt-1 text-2xl font-semibold text-green-900">
+                                <p className="text-sm font-medium text-emerald-400">Total Credit</p>
+                                <p className="mt-1 text-2xl font-semibold text-emerald-300">
                                     {stats.transactionsToday.CREDIT?.totalAmount !== undefined ? stats.transactionsToday.CREDIT.totalAmount.toFixed(2) : '0.00'}
                                 </p>
                             </div>
-                            <div className="bg-green-100 rounded-full p-2">
-                                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11l5-5m0 0l5 5m-5-5v12" /></svg>
+                            <div className="bg-emerald-800/50 rounded-full p-2">
+                                <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11l5-5m0 0l5 5m-5-5v12" /></svg>
                             </div>
                         </div>
-                        <div className="bg-red-50 rounded-md p-4 flex items-center justify-between border border-red-100">
+                        <div className="bg-rose-900/30 rounded-md p-4 flex items-center justify-between border border-rose-800">
                             <div>
-                                <p className="text-sm font-medium text-red-600">Total Debit</p>
-                                <p className="mt-1 text-2xl font-semibold text-red-900">
+                                <p className="text-sm font-medium text-rose-400">Total Debit</p>
+                                <p className="mt-1 text-2xl font-semibold text-rose-300">
                                     {stats.transactionsToday.DEBIT?.totalAmount !== undefined ? stats.transactionsToday.DEBIT.totalAmount.toFixed(2) : '0.00'}
                                 </p>
                             </div>
-                            <div className="bg-red-100 rounded-full p-2">
-                                <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 13l-5 5m0 0l-5-5m5 5V6" /></svg>
+                            <div className="bg-rose-800/50 rounded-full p-2">
+                                <svg className="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 13l-5 5m0 0l-5-5m5 5V6" /></svg>
                             </div>
                         </div>
                     </div>
                 </div>
             )}
+            
+            <DashboardCharts stats={stats} />
         </div>
     );
 }

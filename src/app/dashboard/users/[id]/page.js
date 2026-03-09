@@ -62,7 +62,7 @@ export default function UserDetailsPage({ params }) {
     return (
         <div>
             <div className="mb-6">
-                <button onClick={() => router.back()} className="text-sm font-medium text-indigo-600 hover:text-indigo-500 flex items-center">
+                <button onClick={() => router.back()} className="text-sm font-medium text-blue-500 hover:text-blue-400 flex items-center transition-colors">
                     &larr; Back to Users
                 </button>
             </div>
@@ -71,11 +71,11 @@ export default function UserDetailsPage({ params }) {
             <SuccessAlert message={success} />
 
             {/* Profile Section */}
-            <div className="overflow-hidden bg-white shadow sm:rounded-lg mb-8">
+            <div className="overflow-hidden bg-slate-800 border border-slate-700 shadow-lg sm:rounded-lg mb-8">
                 <div className="px-4 py-6 sm:px-6 flex justify-between items-center">
                     <div>
-                        <h3 className="text-base font-semibold leading-7 text-gray-900">User Information</h3>
-                        <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and status.</p>
+                        <h3 className="text-base font-semibold leading-7 text-slate-100">User Information</h3>
+                        <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-400">Personal details and status.</p>
                     </div>
                     <div>
                         <button
@@ -86,39 +86,39 @@ export default function UserDetailsPage({ params }) {
                         </button>
                     </div>
                 </div>
-                <div className="border-t border-gray-100">
-                    <dl className="divide-y divide-gray-100">
+                <div className="border-t border-slate-700">
+                    <dl className="divide-y divide-slate-700">
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-900">Full name</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{user.name}</dd>
+                            <dt className="text-sm font-medium text-slate-200">Full name</dt>
+                            <dd className="mt-1 text-sm leading-6 text-slate-300 sm:col-span-2 sm:mt-0">{user.name}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-900">Email address</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{user.email}</dd>
+                            <dt className="text-sm font-medium text-slate-200">Email address</dt>
+                            <dd className="mt-1 text-sm leading-6 text-slate-300 sm:col-span-2 sm:mt-0">{user.email}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-900">Role</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{user.role}</dd>
+                            <dt className="text-sm font-medium text-slate-200">Role</dt>
+                            <dd className="mt-1 text-sm leading-6 text-slate-300 sm:col-span-2 sm:mt-0">{user.role}</dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-900">Status</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${user.isActive ? 'bg-green-50 text-green-700 ring-green-600/20' : 'bg-red-50 text-red-700 ring-red-600/10'}`}>
+                            <dt className="text-sm font-medium text-slate-200">Status</dt>
+                            <dd className="mt-1 text-sm leading-6 text-slate-300 sm:col-span-2 sm:mt-0">
+                                <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium border ${user.isActive ? 'bg-emerald-900/30 text-emerald-400 border-emerald-800' : 'bg-rose-900/30 text-rose-400 border-rose-800'}`}>
                                     {user.isActive ? 'Active' : 'Inactive'}
                                 </span>
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-900">Email Verified</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${user.isEmailVerified ? 'bg-green-50 text-green-700 ring-green-600/20' : 'bg-red-50 text-red-700 ring-red-600/10'}`}>
+                            <dt className="text-sm font-medium text-slate-200">Email Verified</dt>
+                            <dd className="mt-1 text-sm leading-6 text-slate-300 sm:col-span-2 sm:mt-0">
+                                <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium border ${user.isEmailVerified ? 'bg-emerald-900/30 text-emerald-400 border-emerald-800' : 'bg-rose-900/30 text-rose-400 border-rose-800'}`}>
                                     {user.isEmailVerified ? 'Yes' : 'No'}
                                 </span>
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt className="text-sm font-medium text-gray-900">Created At</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{new Date(user.createdAt).toLocaleString()}</dd>
+                            <dt className="text-sm font-medium text-slate-200">Created At</dt>
+                            <dd className="mt-1 text-sm leading-6 text-slate-300 sm:col-span-2 sm:mt-0">{new Date(user.createdAt).toLocaleString()}</dd>
                         </div>
                     </dl>
                 </div>

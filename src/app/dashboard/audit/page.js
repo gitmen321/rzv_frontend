@@ -47,40 +47,40 @@ export default function AuditLogsPage() {
         <div>
             <div className="sm:flex sm:items-center">
                 <div className="sm:flex-auto">
-                    <h1 className="text-xl font-semibold leading-6 text-gray-900">Audit Logs</h1>
-                    <p className="mt-2 text-sm text-gray-700">Detailed record of all system modifications and actions.</p>
+                    <h1 className="text-xl font-semibold leading-6 text-slate-100">Audit Logs</h1>
+                    <p className="mt-2 text-sm text-slate-400">Detailed record of all system modifications and actions.</p>
                 </div>
             </div>
 
-            <div className="mt-4 bg-white p-4 shadow rounded-lg border border-gray-100 flex flex-col sm:flex-row gap-4 mb-6">
+            <div className="mt-4 bg-slate-800 p-4 shadow-lg rounded-lg border border-slate-700 flex flex-col sm:flex-row gap-4 mb-6">
                 <div className="flex-1">
-                    <label className="block text-xs font-medium text-gray-700">Filter by Action</label>
+                    <label className="block text-xs font-medium text-slate-200">Filter by Action</label>
                     <input
                         type="text"
                         placeholder="e.g. USER_STATUS_UPDATE"
                         value={action}
                         onChange={(e) => { setAction(e.target.value); setPage(1); }}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2 border ring-1 ring-inset ring-gray-300"
+                        className="mt-1 block w-full rounded-md border border-slate-600 bg-slate-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm px-3 py-2 text-slate-100 placeholder:text-slate-400"
                     />
                 </div>
                 <div className="flex-1">
-                    <label className="block text-xs font-medium text-gray-700">Admin ID</label>
+                    <label className="block text-xs font-medium text-slate-200">Admin ID</label>
                     <input
                         type="text"
                         placeholder="Admin ID..."
                         value={adminId}
                         onChange={(e) => { setAdminId(e.target.value); setPage(1); }}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2 border ring-1 ring-inset ring-gray-300"
+                        className="mt-1 block w-full rounded-md border border-slate-600 bg-slate-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm px-3 py-2 text-slate-100 placeholder:text-slate-400"
                     />
                 </div>
                 <div className="flex-1">
-                    <label className="block text-xs font-medium text-gray-700">Target User ID</label>
+                    <label className="block text-xs font-medium text-slate-200">Target User ID</label>
                     <input
                         type="text"
                         placeholder="Target User ID..."
                         value={targetedUserId}
                         onChange={(e) => { setTargetedUserId(e.target.value); setPage(1); }}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2 border ring-1 ring-inset ring-gray-300"
+                        className="mt-1 block w-full rounded-md border border-slate-600 bg-slate-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm px-3 py-2 text-slate-100 placeholder:text-slate-400"
                     />
                 </div>
             </div>
@@ -93,44 +93,44 @@ export default function AuditLogsPage() {
                         {loading && logs.length === 0 ? (
                             <div className="py-12 flex justify-center"><LoadingSpinner size="lg" /></div>
                         ) : (
-                            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-                                <table className="min-w-full divide-y divide-gray-300">
-                                    <thead className="bg-gray-50">
+                            <div className="overflow-hidden shadow-lg ring-1 ring-slate-700 sm:rounded-lg">
+                                <table className="min-w-full divide-y divide-slate-700">
+                                    <thead className="bg-slate-800">
                                         <tr>
-                                            <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Admin</th>
-                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Action</th>
-                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Target User</th>
-                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Changes</th>
-                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
+                                            <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-slate-200 sm:pl-6">Admin</th>
+                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-200">Action</th>
+                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-200">Target User</th>
+                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-200">Changes</th>
+                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-200">Date</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-gray-200 bg-white">
+                                    <tbody className="divide-y divide-slate-700 bg-slate-800">
                                         {logs.map((log) => (
-                                            <tr key={log._id || Math.random()} className="hover:bg-gray-50">
-                                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                            <tr key={log._id || Math.random()} className="hover:bg-slate-700/50 transition-colors">
+                                                <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-slate-100 sm:pl-6">
                                                     {typeof log.adminId === 'object' ? (log.adminId?.email || log.adminId?._id || 'Unknown Admin') : (log.adminId || 'Unknown Admin')}
                                                 </td>
                                                 <td className="whitespace-nowrap px-3 py-4 text-sm">
-                                                    <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                                                    <span className="inline-flex items-center rounded-md bg-blue-900/30 px-2 py-1 text-xs font-medium text-blue-400 border border-blue-800">
                                                         {log.action}
                                                     </span>
                                                 </td>
-                                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                <td className="whitespace-nowrap px-3 py-4 text-sm text-slate-300">
                                                     {typeof log.targetedUserId === 'object' ? (log.targetedUserId?.email || log.targetedUserId?._id || '-') : (log.targetedUserId || '-')}
                                                 </td>
-                                                <td className="px-3 py-4 text-sm text-gray-500">
+                                                <td className="px-3 py-4 text-sm text-slate-300">
                                                     <div className="text-xs">
-                                                        {log.oldValue && <div className="text-red-500 break-words max-w-xs">- {JSON.stringify(log.oldValue)}</div>}
-                                                        {log.newValue && <div className="text-green-500 break-words max-w-xs mt-1">+ {JSON.stringify(log.newValue)}</div>}
+                                                        {log.oldValue && <div className="text-rose-400 break-words max-w-xs">- {JSON.stringify(log.oldValue)}</div>}
+                                                        {log.newValue && <div className="text-emerald-400 break-words max-w-xs mt-1">+ {JSON.stringify(log.newValue)}</div>}
                                                     </div>
                                                 </td>
-                                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{new Date(log.createdAt).toLocaleString()}</td>
+                                                <td className="whitespace-nowrap px-3 py-4 text-sm text-slate-300">{new Date(log.createdAt).toLocaleString()}</td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
                                 {logs.length === 0 && !loading && (
-                                    <div className="text-center py-10 text-gray-500 text-sm border-t border-gray-200">No records found</div>
+                                    <div className="text-center py-10 text-slate-400 text-sm bg-slate-800 border-t border-slate-700">No records found</div>
                                 )}
                             </div>
                         )}

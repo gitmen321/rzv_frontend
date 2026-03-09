@@ -49,32 +49,32 @@ export default function WalletRangePage() {
         <div>
             <div className="sm:flex sm:items-center justify-between mb-8">
                 <div>
-                    <h1 className="text-xl font-semibold leading-6 text-gray-900">Wallet Range Summary</h1>
-                    <p className="mt-2 text-sm text-gray-700">Detailed transactions across a date range.</p>
+                    <h1 className="text-xl font-semibold leading-6 text-slate-100">Wallet Range Summary</h1>
+                    <p className="mt-2 text-sm text-slate-400">Detailed transactions across a date range.</p>
                 </div>
                 <div className="mt-4 sm:flex sm:items-center sm:space-x-4 sm:mt-0">
                     <div className="flex items-center space-x-2">
-                        <label className="text-sm font-medium text-gray-700">From</label>
+                        <label className="text-sm font-medium text-slate-200">From</label>
                         <input
                             type="date"
                             value={start}
                             onChange={(e) => setStart(e.target.value)}
-                            className="block rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            className="block rounded-md border border-slate-600 bg-slate-700 py-1.5 px-3 text-slate-100 shadow-sm focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                         />
                     </div>
                     <div className="flex items-center space-x-2 mt-4 sm:mt-0">
-                        <label className="text-sm font-medium text-gray-700">To</label>
+                        <label className="text-sm font-medium text-slate-200">To</label>
                         <input
                             type="date"
                             value={end}
                             onChange={(e) => setEnd(e.target.value)}
-                            className="block rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            className="block rounded-md border border-slate-600 bg-slate-700 py-1.5 px-3 text-slate-100 shadow-sm focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                         />
                     </div>
                     <div className="mt-4 sm:mt-0">
                         <button
                             onClick={() => fetchRange()}
-                            className="inline-flex items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            className="inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors"
                         >
                             Search
                         </button>
@@ -90,35 +90,35 @@ export default function WalletRangePage() {
                         {loading && transactions.length === 0 ? (
                             <div className="py-12 flex justify-center"><LoadingSpinner size="lg" /></div>
                         ) : (
-                            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
-                                <table className="min-w-full divide-y divide-gray-300">
-                                    <thead className="bg-gray-50">
+                            <div className="overflow-hidden shadow-lg ring-1 ring-slate-700 sm:rounded-lg">
+                                <table className="min-w-full divide-y divide-slate-700">
+                                    <thead className="bg-slate-800">
                                         <tr>
-                                            <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Type</th>
-                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Amount</th>
-                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Reason</th>
-                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User ID</th>
-                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
+                                            <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-slate-200 sm:pl-6">Type</th>
+                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-200">Amount</th>
+                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-200">Reason</th>
+                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-200">User ID</th>
+                                            <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-slate-200">Date</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-gray-200 bg-white">
+                                    <tbody className="divide-y divide-slate-700 bg-slate-800">
                                         {transactions.map((tx) => (
-                                            <tr key={tx._id || Math.random()} className="hover:bg-gray-50">
+                                            <tr key={tx._id || Math.random()} className="hover:bg-slate-700/50 transition-colors">
                                                 <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-                                                    <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${tx.type === 'CREDIT' ? 'bg-green-50 text-green-700 ring-green-600/20' : 'bg-red-50 text-red-700 ring-red-600/10'}`}>
+                                                    <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium border ${tx.type === 'CREDIT' ? 'bg-emerald-900/30 text-emerald-400 border-emerald-800' : 'bg-rose-900/30 text-rose-400 border-rose-800'}`}>
                                                         {tx.type}
                                                     </span>
                                                 </td>
-                                                <td className="whitespace-nowrap px-3 py-4 text-sm font-medium text-gray-900">${parseFloat(tx.amount).toFixed(2)}</td>
-                                                <td className="px-3 py-4 text-sm text-gray-500 break-words max-w-xs">{tx.reason}</td>
-                                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{tx.userId}</td>
-                                                <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{new Date(tx.createdAt).toLocaleDateString()} {new Date(tx.createdAt).toLocaleTimeString()}</td>
+                                                <td className="whitespace-nowrap px-3 py-4 text-sm font-medium text-slate-100">${parseFloat(tx.amount).toFixed(2)}</td>
+                                                <td className="px-3 py-4 text-sm text-slate-300 break-words max-w-xs">{tx.reason}</td>
+                                                <td className="whitespace-nowrap px-3 py-4 text-sm text-slate-300">{tx.userId}</td>
+                                                <td className="whitespace-nowrap px-3 py-4 text-sm text-slate-300">{new Date(tx.createdAt).toLocaleDateString()} {new Date(tx.createdAt).toLocaleTimeString()}</td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
                                 {transactions.length === 0 && !loading && (
-                                    <div className="text-center py-10 text-gray-500 text-sm border-t border-gray-200">No records found</div>
+                                    <div className="text-center py-10 text-slate-400 text-sm bg-slate-800 border-t border-slate-700">No records found</div>
                                 )}
                             </div>
                         )}
