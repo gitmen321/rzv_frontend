@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RZV Admin Dashboard (Frontend)
 
-## Getting Started
+This is the *frontend admin dashboard* for the RZV backend system.  
+It is built using *Next.js* and provides a simple UI to demonstrate and test the backend APIs.
 
-First, run the development server:
+⚠️ *Important:*  
+This project is currently in *demo stage* and is *not the final version*.  
+More improvements and features will be added in future updates.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 Live Demo
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Frontend (Vercel):  
+https://rzv-frontend.vercel.app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Backend API (Render):  
+https://rzv-backend.onrender.com
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📌 Purpose
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This frontend application exists mainly to:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Demonstrate backend functionality
+- Test admin APIs
+- Provide a simple UI for interacting with the system
 
-## Deploy on Vercel
+It allows testers and reviewers to:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Login as admin
+- View dashboard statistics
+- Manage users
+- Adjust user wallet balances
+- View wallet transactions
+- Monitor audit logs
+- Test user registration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🛠 Tech Stack
+
+- *Next.js*
+- *React*
+- *JavaScript*
+- *Tailwind CSS*
+- *Vercel* (Frontend Deployment)
+- *Render* (Backend Deployment)
+
+---
+
+## 🔐 Authentication
+
+Admin authentication is implemented using:
+
+- *JWT Access Token*
+- *Refresh Token Rotation*
+- *HTTP-only cookies*
+
+After login:
+
+- Access token is used for API requests
+- Refresh token maintains the session
+
+---
+
+## 🧩 Features
+
+### Admin Dashboard
+- Overview statistics
+- User activity summary
+- Wallet statistics
+- Transaction overview
+
+### User Management
+- List all users
+- Pagination
+- View user details
+- Activate / deactivate users
+
+### Wallet Management
+- View wallet balance
+- View transaction history
+- Adjust wallet balance (credit / debit)
+
+### Audit Logs
+- View system audit logs
+- Filter admin actions
+
+### Demo User Registration
+User registration UI is included *for demo purposes only*.
+
+This allows testers to create users and see them appear in the admin dashboard.
+
+---
+
+## ⚠️ Demo Notice
+
+This frontend is currently *a demonstration interface for backend APIs*.
+
+Some UI features will be improved in future updates, including:
+
+- Enhanced dashboard analytics
+- Improved UI/UX
+- Additional admin tools
+- Better system monitoring
+
+---
+
+## 🚀 Future Improvements
+
+Planned upgrades include:
+
+- Improved UI design
+- More analytics charts
+- Better filtering and search
+- Enhanced audit tracking
+- Performance improvements
+
+---
+
+## 📷 UI Preview
+
+Login Page  
+Admin Dashboard  
+User Management  
+Wallet Management  
+Audit Logs
+
+(Screenshots will be added in future updates)
+
+---
+
+## 📄 License
+
+This project is for *portfolio and educational purposes*.
