@@ -95,68 +95,120 @@ function CoinIcon() {
     );
 }
 
-export default function Sidebar() {
+// Shared sidebar content used in both desktop and mobile
+function SidebarContent({ pathname, onLinkClick }) {
+    return (
+        <>
+            {/* Logo / Title */}
+            <div className="flex h-16 shrink-0 items-center gap-x-3 mt-1">
+                <CoinIcon />
+                <div className="flex flex-col leading-none">
+                    <span className="text-base font-black tracking-tight text-white">RZV <span className="text-indigo-400">Admin</span></span>
+                    <span className="text-[10px] text-slate-500 font-medium tracking-widest uppercase">Control Panel</span>
+                </div>
+            </div>
+
+            {/* Divider */}
+            <div className="h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent -mt-2" />
+
+            <nav className="flex flex-1 flex-col">
+                <ul role="list" className="flex flex-1 flex-col gap-y-1">
+                    {navigation.map((item) => {
+                        const isActive = pathname === item.href || (pathname.startsWith(item.href) && item.href !== '/dashboard');
+                        return (
+                            <li key={item.name}>
+                                <Link
+                                    href={item.href}
+                                    onClick={onLinkClick}
+                                    className={`
+                                        group flex items-center gap-x-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-150
+                                        ${isActive
+                                            ? 'bg-indigo-600/20 text-indigo-300 shadow-sm shadow-indigo-500/10 ring-1 ring-indigo-500/25'
+                                            : 'text-slate-400 hover:text-white hover:bg-white/5'
+                                        }
+                                    `}
+                                >
+                                    {/* Icon wrapper */}
+                                    <span className={`
+                                        flex items-center justify-center w-8 h-8 rounded-lg shrink-0 transition-all duration-150
+                                        ${isActive
+                                            ? 'bg-indigo-500/25 text-indigo-300 shadow-inner shadow-indigo-500/20'
+                                            : 'bg-white/5 text-slate-500 group-hover:bg-white/10 group-hover:text-slate-200'
+                                        }
+                                    `}>
+                                        {item.icon}
+                                    </span>
+                                    {item.name}
+                                    {isActive && (
+                                        <span className="ml-auto w-1.5 h-1.5 rounded-full bg-indigo-400 shadow shadow-indigo-400/60" />
+                                    )}
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </nav>
+        </>
+    );
+}
+
+const sidebarBgStyle = {
+    background: 'linear-gradient(180deg, #0f1629 0%, #0d1321 100%)',
+    borderRight: '1px solid rgba(99,102,241,0.15)',
+    boxShadow: '4px 0 24px rgba(0,0,0,0.4)',
+};
+
+export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
     const pathname = usePathname();
 
     return (
-        <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
-            <div
-                className="flex grow flex-col gap-y-5 overflow-y-auto px-4 pb-4"
-                style={{
-                    background: 'linear-gradient(180deg, #0f1629 0%, #0d1321 100%)',
-                    borderRight: '1px solid rgba(99,102,241,0.15)',
-                    boxShadow: '4px 0 24px rgba(0,0,0,0.4)',
-                }}
-            >
-                {/* Logo / Title */}
-                <div className="flex h-16 shrink-0 items-center gap-x-3 mt-1">
-                    <CoinIcon />
-                    <div className="flex flex-col leading-none">
-                        <span className="text-base font-black tracking-tight text-white">RZV <span className="text-indigo-400">Admin</span></span>
-                        <span className="text-[10px] text-slate-500 font-medium tracking-widest uppercase">Control Panel</span>
+        <>
+            {/* Mobile sidebar drawer */}
+            {sidebarOpen && (
+                <div className="relative z-50 lg:hidden">
+                    {/* Backdrop */}
+                    <div
+                        className="fixed inset-0 bg-black/60 transition-opacity"
+                        onClick={() => setSidebarOpen(false)}
+                    />
+
+                    {/* Drawer panel */}
+                    <div className="fixed inset-0 flex">
+                        <div
+                            className="relative flex w-64 max-w-[80vw] flex-col"
+                            style={sidebarBgStyle}
+                        >
+                            {/* Close button */}
+                            <div className="absolute right-2 top-2">
+                                <button
+                                    type="button"
+                                    className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+                                    onClick={() => setSidebarOpen(false)}
+                                >
+                                    <span className="sr-only">Close sidebar</span>
+                                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div className="flex grow flex-col gap-y-5 overflow-y-auto px-4 pb-4">
+                                <SidebarContent pathname={pathname} onLinkClick={() => setSidebarOpen(false)} />
+                            </div>
+                        </div>
                     </div>
                 </div>
+            )}
 
-                {/* Divider */}
-                <div className="h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent -mt-2" />
-
-                <nav className="flex flex-1 flex-col">
-                    <ul role="list" className="flex flex-1 flex-col gap-y-1">
-                        {navigation.map((item) => {
-                            const isActive = pathname === item.href || (pathname.startsWith(item.href) && item.href !== '/dashboard');
-                            return (
-                                <li key={item.name}>
-                                    <Link
-                                        href={item.href}
-                                        className={`
-                                            group flex items-center gap-x-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-150
-                                            ${isActive
-                                                ? 'bg-indigo-600/20 text-indigo-300 shadow-sm shadow-indigo-500/10 ring-1 ring-indigo-500/25'
-                                                : 'text-slate-400 hover:text-white hover:bg-white/5'
-                                            }
-                                        `}
-                                    >
-                                        {/* Icon wrapper */}
-                                        <span className={`
-                                            flex items-center justify-center w-8 h-8 rounded-lg shrink-0 transition-all duration-150
-                                            ${isActive
-                                                ? 'bg-indigo-500/25 text-indigo-300 shadow-inner shadow-indigo-500/20'
-                                                : 'bg-white/5 text-slate-500 group-hover:bg-white/10 group-hover:text-slate-200'
-                                            }
-                                        `}>
-                                            {item.icon}
-                                        </span>
-                                        {item.name}
-                                        {isActive && (
-                                            <span className="ml-auto w-1.5 h-1.5 rounded-full bg-indigo-400 shadow shadow-indigo-400/60" />
-                                        )}
-                                    </Link>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </nav>
+            {/* Desktop sidebar (unchanged) */}
+            <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col">
+                <div
+                    className="flex grow flex-col gap-y-5 overflow-y-auto px-4 pb-4"
+                    style={sidebarBgStyle}
+                >
+                    <SidebarContent pathname={pathname} />
+                </div>
             </div>
-        </div>
+        </>
     );
 }

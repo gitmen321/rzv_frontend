@@ -16,7 +16,7 @@ export default function Pagination({ page, limit, totalPages, onPageChange }) {
                         className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold transition-colors ${
                             i === Number(page)
                                 ? 'z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-                                : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
+                                : 'text-slate-300 ring-1 ring-inset ring-slate-600 hover:bg-slate-700'
                         }`}
                     >
                         {i}
@@ -27,7 +27,7 @@ export default function Pagination({ page, limit, totalPages, onPageChange }) {
                 (i === page + 2 && i < totalPages)
             ) {
                 pages.push(
-                    <span key={i} className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">
+                    <span key={i} className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-slate-400 ring-1 ring-inset ring-slate-600 focus:outline-offset-0">
                         ...
                     </span>
                 );
@@ -37,27 +37,27 @@ export default function Pagination({ page, limit, totalPages, onPageChange }) {
     };
 
     return (
-        <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-4 rounded-b-lg shadow">
+        <div className="flex items-center justify-between border-t border-slate-700 bg-slate-800 px-4 py-3 sm:px-6 mt-4 rounded-b-lg shadow ring-1 ring-slate-700">
             <div className="flex flex-1 justify-between sm:hidden">
                 <button
                     onClick={() => onPageChange(Math.max(1, page - 1))}
                     disabled={page <= 1}
-                    className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+                    className="relative inline-flex items-center rounded-md border border-slate-600 bg-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-600 disabled:opacity-50"
                 >
                     Previous
                 </button>
                 <button
                     onClick={() => onPageChange(Math.min(totalPages, page + 1))}
                     disabled={page >= totalPages}
-                    className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50"
+                    className="relative ml-3 inline-flex items-center rounded-md border border-slate-600 bg-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-600 disabled:opacity-50"
                 >
                     Next
                 </button>
             </div>
             <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
                 <div>
-                    <p className="text-sm text-gray-700">
-                        Showing page <span className="font-medium">{page}</span> of <span className="font-medium">{totalPages}</span>
+                    <p className="text-sm text-slate-300">
+                        Showing page <span className="font-medium text-white">{page}</span> of <span className="font-medium text-white">{totalPages}</span>
                     </p>
                 </div>
                 <div>
@@ -65,7 +65,7 @@ export default function Pagination({ page, limit, totalPages, onPageChange }) {
                         <button
                             onClick={() => onPageChange(Math.max(1, page - 1))}
                             disabled={page <= 1}
-                            className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
+                            className="relative inline-flex items-center rounded-l-md px-2 py-2 text-slate-400 ring-1 ring-inset ring-slate-600 hover:bg-slate-700 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
                         >
                             <span className="sr-only">Previous</span>
                             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -78,7 +78,7 @@ export default function Pagination({ page, limit, totalPages, onPageChange }) {
                         <button
                             onClick={() => onPageChange(Math.min(totalPages, page + 1))}
                             disabled={page >= totalPages}
-                            className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
+                            className="relative inline-flex items-center rounded-r-md px-2 py-2 text-slate-400 ring-1 ring-inset ring-slate-600 hover:bg-slate-700 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
                         >
                             <span className="sr-only">Next</span>
                             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
